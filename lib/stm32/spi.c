@@ -136,14 +136,10 @@ u16 spi_xfer(u32 spi, u16 data)
 	return SPI_DR(spi);
 }
 
-void spi_set_bidirectional_mode(u32 spi)
-{
-	SPI_CR1(spi) |= SPI_CR1_BIDIMODE;
-}
-
 void spi_set_unidirectional_mode(u32 spi)
 {
 	SPI_CR1(spi) &= ~SPI_CR1_BIDIMODE;
+	SPI_CR1(spi) &= ~SPI_CR1_BIDIOE;
 }
 
 void spi_set_bidirectional_receive_only_mode(u32 spi)
